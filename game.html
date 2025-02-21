@@ -9,82 +9,61 @@
   <body>
     <h3>ROCK SCISSOR PAPER GAME</h3>
     <div class="buttons">
-      <button
-        onclick="
-       let number=Math.random();
-       let randomNumber=number*3;
-       if(randomNumber>=0 && randomNumber<1){
-           computerChoice='rock';
-       }else if(randomNumber>=1 && randomNumber<2){
-            computerChoice='paper';
-       }else{
-           computerChoice='scissor';
-      }
+      <button onclick="showResult('rock')" >ROCK</button>
+      <button onclick="showResult('paper')">PAPER</button>
+      <button onclick="showResult('scissor')">SCISSOR</button>
       
-      let result='';
-      if(computerChoice==='rock'){
-        result ='tie';
-      }else if(computerChoice==='paper'){
-        result='you lose';
-      }else{
-       result='you win';
-      }
-      alert(`you chose rock,computer chose ${computerChoice}, ${result}`)
+      <script>
+        function pickComputerMove() {
+          let number = Math.random();
+          let randomNumber = number * 3;
+          if (randomNumber >= 0 && randomNumber < 1) {
+            computerMove = "rock";
+          } else if (randomNumber >= 1 && randomNumber < 2) {
+            computerMove = "paper";
+          } else {
+            computerMove = "scissor";
+          }
+          return computerMove;
+        }
 
-
-      "
-      >
-        ROCK
-      </button>
-
-      <button  onclick="
-       number=Math.random();
-       randomNumber=number*3;
-      if(randomNumber>=0 && randomNumber<1){
-          computerChoice='rock';
-      }else if(randomNumber>=1 && randomNumber<2){
-           computerChoice='paper';
-      }else{
-          computerChoice='scissor';
-     }
-     
-      result='';
-     if(computerChoice==='rock'){
-       result ='you win';
-     }else if(computerChoice==='paper'){
-       result='its a tie';
-     }else{
-      result='you you lose';
-     }
-     alert(`you chose paper,computer chose ${computerChoice}, ${result}`)
-
-
-     ">PAPER</button>
-      
-      <button  onclick="
-       number=Math.random();
-       randomNumber=number*3;
-      if(randomNumber>=0 && randomNumber<1){
-          computerChoice='rock';
-      }else if(randomNumber>=1 && randomNumber<2){
-           computerChoice='paper';
-      }else{
-          computerChoice='scissor';
-     }
-     
-      result='';
-     if(computerChoice==='rock'){
-       result ='you lose';
-     }else if(computerChoice==='paper'){
-       result='you win';
-     }else{
-      result='its a tie';
-     }
-     alert(`you chose scissor,computer chose ${computerChoice}, ${result}`)
-
-
-     ">SCISSOR</button>
-      <script src="game.js"></script>
+        function showResult(playerMove) {
+          const computerMove = pickComputerMove();
+          let result = "";
+          if (playerMove === "rock") {
+            if (computerMove === "rock") {
+              result = "tie";
+            } else if (computerMove === "paper") {
+              result = "you lose";
+            } else {
+              result = "you win";
+            }
+            alert(`you chose ${playerMove},computer chose ${computerMove}, ${result}`);
+          
+          } else if (playerMove === "paper") {
+            if (computerMove === "rock") {
+              result = "you win";
+            } else if (computerMove === "paper") {
+              result = "its a tie";
+            } else {
+              result = "you you lose";
+            }
+            alert(`you chose ${playerMove},computer chose ${computerMove}, ${result}`);
+          
+          } else if(playerMove==='scissor') {
+            if (computerMove === "rock") {
+              result = "you lose";
+            } else if (computerMove === "paper") {
+              result = "you win";
+            } else {
+              result = "its a tie";
+            }
+            alert(
+              `you chose ${playerMove},computer chose ${computerMove}, ${result}`
+            );
+          }
+        }
+      </script>
     </div>
   </body>
 </html>
